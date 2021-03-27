@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>旋转莲花</title>
+  <style>
+    body {
+      margin: 0px;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #scene {
+      width: 200px;
+      height: 200px;
+      perspective: 550px;
+      perspective-origin: center top;/*从中间透视*/
+    }
+
+    .flower {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;/*变换样式是3D*/
+    }
+
+    .petal {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 100px;
+      opacity: 1;
+      background: linear-gradient(rgb(252, 1, 189), violet);
+      background-size: 300px 300px;
+    }
+
+    /* 花的轴心 */
+    .center {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 50px;
+      background: radial-gradient(rgb(9, 255, 0), violet);
+      transform: rotateX(90deg) translateX(50px) translateZ(-155px);
+    }
+
+    /*花瓣1*/
+    .petal:nth-child(2) {
+      transform: rotateY(0deg) translateZ(140px) rotate3d(-2, 0.5, 0, 45deg);
+    }
+
+    /*花瓣2 */
+    .petal:nth-child(3) {
+      transform: rotateY(60deg) translateZ(140px) rotate3d(-2, 0.5, 0, 45deg);
+    }
+
+    /*花瓣3 */
+    .petal:nth-child(4) {
+      transform: rotateY(120deg) translateZ(140px) rotate3d(-2, 0.5, 0, 45deg);
+    }
+
+    /*花瓣*/
+    .petal:nth-child(5) {
+      transform: rotateY(180deg) translateZ(140px) rotate3d(-2, 0.5, 0, 45deg);
+    }
+
+    /*花瓣5 */
+    .petal:nth-child(6) {
+      transform: rotateY(240deg) translateZ(140px) rotate3d(-2, 0.5, 0, 45deg);
+    }
+
+    /*花瓣6 */
+    .petal:nth-child(7) {
+      transform: rotateY(300deg) translateZ(140px) rotate3d(-2, 0.5, 0, 45deg);
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotateY(0deg);
+      }
+
+      to {
+        transform: rotateY(360deg);
+      }
+    }
+
+    .flower {
+      animation-name: rotate;
+      animation-duration: 5s;
+    }
+
+    @keyframes xuanzhuan {
+      from {
+        transform: rotateY(0deg);
+      }
+
+      to {
+        transform: rotateY(-360deg);
+      }
+    }
+
+    .flower:hover {
+      animation-name: xuanzhuan;
+      animation-duration: 1s;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="scene">
+    <div class="flower">
+      <div class="center"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+      <div class="petal"></div>
+    </div>
+  </div>
+</body>
+<script>
+  document.getElementById("scene").addEventListener("click", dianJi);
+  function dianJi(){
+    document.querySelector(".flower").style.transition = "all 1.3s";
+    document.querySelector(".flower").style.transform = "scale(1.3)";
+  }
+
+</script>
+
+</html>
